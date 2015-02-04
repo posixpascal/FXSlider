@@ -1,7 +1,12 @@
 class FXPlugin {
 	constructor(){
-		console.log("Loaded plugin");
-	}
+	    
+    }
+    
+    onParseSlide(slide, next){
+        next(slide);
+    }
+    
 }
 
 export default FXPlugin;

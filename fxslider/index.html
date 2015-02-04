@@ -12,7 +12,7 @@
 		<div id="slider"></div>
 
 		<script>
-			require(['fxslider.js'], function(FXSlider){
+			require(['fxslider.js', /* load additional plugins here */ 'plugins/fx.timing'], function(FXSlider, FXTiming){
 				var slider = new FXSlider('#slider', {
 					slides: [
 						{
@@ -52,7 +52,7 @@
 
 					config: {
 						plugins: [ // globally available plugins.
-							'fx.timing',
+							FXTiming,
 						],
 						size: {
 							'height': '450px',
