@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FXSlider - a simple, intuitive and responsive slider</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.15/require.min.js"></script>
+		<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div id="slider"></div>
+
+		<script>
+			require(['fxslider.js'], function(FXSlider){
+				var slider = new FXSlider('#slider', {
+					slides: [
+						{
+							title: "First slide",
+							layers: [
+								{
+									type: "image",
+									position: {
+										x: 10,
+										y: 10
+									},
+									// these are just CSS classes. FXSlider uses CSS3 for animations.
+									onEntryAnimation: 'fadeIn',
+									onLeaveAnimation: 'fadeOut',
+
+									delay: 500,
+									plugins: [ // plugins available for this layer only.
+										'fx.parallax', 
+									],
+
+									src: '/slider_img.png'
+								},
+								{
+									type: "text",
+									position: {
+										x: '10',
+										y: 'right'
+									},
+
+									delay: 800,
+									value: 'Hello World!',
+									style: 'main-text' // style is a simple CSS class. you can also use JSON-style CSS if you include fx.utils.jscss
+								}
+							],
+						}
+					],
+
+					config: {
+						plugins: [ // globally available plugins.
+							'fx.timing',
+						],
+						size: {
+							'height': '450px',
+							'width': '100%'
+						},
+						theme: 'fxtheme-1',
+						/* ... theme options ... */
+					}
+				});
+				slider.test();
+			});
+		</script>
+		
+	</body>
+</script>
