@@ -5,10 +5,17 @@ module.exports = function(grunt){
         watch: {
             '6to5': {
                 files: ['fxslider/{,**/}*.js', 'fxslider/index.html', 'fxslider/fxslider.css'],
-                tasks: ['clean', '6to5', 'copy:main', 'copy:bower']
+                tasks: ['clean', '6to5', 'copy:main', 'copy:bower', 'copy:css']
             }
         },
         copy: {
+            css: {
+                cwd: 'fxslider/',
+                src: '*.css',
+                dest: 'dist/',
+                expand: true,
+                flatten: true
+            },
             main: {
                 cwd: 'fxslider/',
                 src: 'index.html',
@@ -40,5 +47,5 @@ module.exports = function(grunt){
         }
     });
 
-    grunt.registerTask('default', ['clean', '6to5', 'copy:main', 'copy:bower']);
+    grunt.registerTask('default', ['clean', '6to5', 'copy:main', 'copy:css', 'copy:bower']);
 }

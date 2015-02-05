@@ -5,11 +5,8 @@ class FXTiming extends FXPlugin {
 		super();
 	}
     
-    onParseSlide(slide, next){
-        if (typeof slide.delay !== "undefined"){
-            slide.hasDelay = true;
-        }
-        next(slide);
+    prepare(fxslider){
+        
     }
 }
 export default FXTiming;
