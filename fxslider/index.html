@@ -14,7 +14,7 @@
 
 		<script>
 			require(['fxslider.js', /* load additional plugins here */ 'plugins/fx.timing'], function(FXSlider, FXTiming){
-				var slider = new FXSlider('#slider', {
+				var fxSlider = new FXSlider('#slider', {
 					slides: [
 						{
 							title: "First slide",
@@ -39,7 +39,7 @@
 								{
 									type: "text",
 									position: {
-										x: '10',
+										x: '10px',
 										y: 'right'
 									},
 
@@ -53,7 +53,7 @@
 
 					config: {
 						plugins: [ // globally available plugins.
-							FXTiming,
+							FXTiming /*, FXControls, FXTransitions, FXResponsive */
 						],
 						size: {
 							'height': '450px',
@@ -63,7 +63,6 @@
 						/* ... theme options ... */
 					}
 				});
-
 			});
 		</script>
 		
