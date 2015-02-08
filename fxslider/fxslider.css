@@ -1,13 +1,11 @@
 /* FXSlider */
+/* line 2, sass/fxslider.scss */
 .fxslider {
-	width: 100%;
-	height: 500px;
-	background-color: #ccc;
+  width: 100%;
+  height: 500px;
+  background-color: #ccc;
 }
 
 /*
 	FXSlider - Default Theme
  */
-.fxtheme-default {
-
-}

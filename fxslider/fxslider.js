@@ -21,7 +21,7 @@ class FXCSS {
     }
     
     static hasClass(element, cssClass){
-        return (element.className.match(new RegExp(`(?:^|\s)${cssClass}(?!\S)/`, )))
+        return (element.className.match(new RegExp(`(?:^|\s)${cssClass}(?!\S)/`, 'g')));
     }
 
     static toggleClass(element, cssClass){
@@ -32,8 +32,11 @@ class FXCSS {
         }
     }
     
-    static applyCSS(element, styleSheet){
-
+    static applyCSS(element, styleSheetMap){
+        for (var key in styleSheetMap)
+            element.style[key] = styleSheetMap[key];
+        
+        return element.style;
     }
 }
 
@@ -63,12 +66,16 @@ class FXSlider {
     beforeInit(){};
     
     init(){
-        var height = this.config.height || [];
-        var width = this.config.width || [];
+        var height = this.config.size.height || "500px";
+        var width = this.config.size.width || "100%";
         
-        FXCSS.applyCSS(this.element, `height: ${height}px; width: ${width}px;`);
-        FXCSS.addClass(this.element, `fx-slider`);
-        FXCSS.addClass(this.element, `fx-theme-${this.theme}`);
+        FXCSS.applyCSS(this.element, {
+            height: height,
+            width:  width
+        });
+        
+        FXCSS.addClass(this.element, `fxslider`);
+        FXCSS.addClass(this.element, `fxtheme-${this.theme}`);
         
         this.preparePlugins();
         
