@@ -1,10 +1,40 @@
 class FXSlide {
-    constructor(){
-        this.layers = [];
+    constructor(slider, slide){
+        this.fxslider = slider;
+        this.layers = slide.layers;
     }
     
     addLayer(layer){
         console.log(layer);
+    }
+    
+    initLayers(){
+        this.layers = this.layers.map((layer) => {
+            return new FXLayer(this, layer);
+        });
+    }
+    
+    show(){
+        
+    }
+    
+    hide(){
+        
+    }
+}
+
+class FXLayer {
+    constructor(slide, layer){
+        this.slide = slide;
+        this.layer = layer;
+    }
+    
+    show(){
+        
+    }
+    
+    hide(){
+        
     }
 }
 
@@ -45,7 +75,7 @@ class FXSlider {
 	constructor( element = "#slider", slider = {} ){
 		this.element = document.querySelector(element);
         this.pluginList = new Set();
-        this.slides = [];
+        this.slides = slider.slides;
         this.events = {};
         this.theme = slider.config.theme || "fxdefault";
         
@@ -90,8 +120,22 @@ class FXSlider {
         }
     }
     
-	afterInit(){};
+	afterInit(){
+        this.initSlides();   
+	}
 
+    initSlides(){
+        var slides = [];
+        for (var slide of this.slides){
+            slides.push(new FXSlide(this, slide));
+        }
+        this.slides = slides;
+        this.initLayers();
+    }
+    
+    initLayers(){
+        this.slides.map = this.slides.map((slide) => { return slide.initLayers(); });
+    }
 
 
 }
